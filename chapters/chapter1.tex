@@ -1,0 +1,27 @@
+\chapter{Introduction}
+\label{chap:intro}
+\chaptermark{Optional running chapter heading}
+
+Text-to-image models have been actively developed recently.  Recent models \cite{Imagen}\cite{PixArt}\cite{Latent_Diffusion}\cite{Casceded_Diffusion}\cite{Stable_Duffusion} have made great strides in creating realistic images that exactly follow the textual description. Researchers have constructed a set of metrics designed to assess the quality and effectiveness of these models. Metrics should evaluate the individual characteristics of a set of generated pictures and their description(prompts) such as defective, aesthetically pleasing, fidelity, text-to-image, diversity, and rarity. The ultimate objective is to ensure that the metric's evaluation of the generative model is reflective of human evaluative standards.
+
+Unfortunately, an estimate of the generated images made with the current most commonly used metrics may not match the human judgement. There's also the problem that there are no metrics that separately assess individual characteristics.
+
+At the moment, two of the more commonly used metrics for generative models are CLIPScore \cite{CLIPScore} and Frechet Inception Distance (FID) \cite{FID}. The idea behind the CLIPScore metric is to use the CLIP(Contrastive Language-Image Pretraining) \cite{CLIP} model to create latent vector representation(embedding) for image and text and count their consine simmularity to estimate the text to image alignment. To count CLIPScore you only need prompts, a text description of what to generate. The idea of FID is to create embeddings for the generated images and for the real images and compare them using Fréchet Distance(FD). FID indicates how well the image generation model generates images similar to real images. To estimate the calculation of the FID metric I need generated images and real images to which the generated images should resemble.
+
+% There are already methods to improve FID and CLIPScore. In FID, researchers change the way the distance between distributions is calculated, as well as the method of embedding. In CLIPScore, researchers change the CLIP architecture to an improved one, such as BLIP \cite{BLIP}, and do some fine-tune on special datasets.
+
+Current metrics can be divided into two types: metrics that count the distance between the embeddings of real images and the generated ones, and metrics that give the pair of the generated image and the prompt some score. In what follows, I will refer to the first type of metrics as distance metrics and the second as score metrics.
+
+At the moment there is no complete comparison of all metrics to determine the best one. There is also no clear distinction between what a metric measures: defective, aesthetically pleasing, fidelity, text-to-image, diversity, or rarity. Some metrics show unrealistic results, such as FID. Almost all metrics do not correlate with human judgement or correlate very weakly.
+
+ The contributions of this thesis are as follows:
+ \begin{itemize}
+  \item Analysing existing metrics, validating and comparing them on the same data, using the same image generation model. Measuring the correlation of existing metrics with human judgement.
+  \item Running experiments with current metrics to try to improve them. For example, changing the model for embeddings and the method of measuring similarity of distributions for real and generated images in distance metrics, improving the CLIP model in score metrics.
+  \item Writing my own metric which based on idea of distance metric, but which requires not only real images but prompts which relates to real images. Idea is to use information that real image and generated image realise the same prompt.
+\end{itemize}
+
+
+
+
+

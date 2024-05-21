@@ -1,0 +1,30 @@
+\chapter{Discussion}
+\label{chap:discussion}
+In this chapter, I want to explain the usefulness of my research based on analyzing the amount of time and money saved by using offline metrics rather than using humans to determine the best text-to-image generation model. I will also describe what future research can be done.
+
+\section{Research application}
+Suppose we have two generative text-to-image models and we want to understand which one is better. Suppose we have two methods: human evaluation and offline metrics. Using offline metrics does not require a lot of time and does not require any money at all, so I will calculate the amount of time and money spent using the human evaluation method.
+
+
+Suppose we have a dataset of 10000 prompts. Each model generates one image per prompt, so annotators need to make 10000 comparisons, but for better evaluation we need to use three annotators, so annotators get 30000 comparisons. To estimate which model is better I take the proportion of evaluations on a particular model which determines whether the model is better or worse. For example, if out of 30000 comparisons 21000 were for the first model, then the first model scores 0.7 and the second model scores 0.3.
+
+Assuming that an annotator spends 6 seconds for one comparison, it would take three annotators to annotate 30000 binary comparisons: 10000 * 6 / 60 / 60 = 16.67 hours of continuous work by three people.
+
+Since labor payment depends on many factors it is difficult to objectively estimate how much money can be spent on annotating such a dataset. I say that an annotator gets \$$x$ dollars for one binary comparison or \$$y$ dollars for one hour of work.
+
+It turns out that in total it may take $16.67 * 3 * y=\$50y$ dollars to partition such a dataset if count payment in hours or \$$30000x$ dollars if paid for each binary comparison.
+
+Assuming that the annotator gets one cent per three images marked, or \$4 per hour of work, it would cost \$200 dollars to mark up the dataset if we consider hourly rates or \$100 dollars if paid for each binary comparison. I take an average estimate of \$150 dollars.
+
+And this is only to test one experiment, and if consider that there can be dozens of such experiments, let's say about 50 only for one research, then 150*50=\$7500 dollars can be spent to explore one research question.
+
+Calculations show that a good offline metric saves \$7500 dollars and 2500 person-hours just to explore a single research question.
+
+\section{Future works}
+I can deduce three ways to further explore the issue of offline metrics.
+
+The first way is to study what each metric is responsible for, i.e. what aspect of the image each metric considers more important. By aspects I mean aesthetics, defectiveness, and relevance to text. From my experiments I assume that distance metrics are related to aesthetics and score metrics to text relevance, but to verify my assumption I need to do some more experiments.
+
+The second way is to study score metrics better, to conduct more experiments to identify a more clear leader between all score metrics.
+
+The third way is to study offline metrics that change the generative model into a discriminative model. I took this approach from the SelfEval\cite{SelfEval} article and it seems very promising to me.

@@ -1,0 +1,12 @@
+\chapter{Conclusion}
+\label{chap:conclusion}
+In this thesis, I analyzed existing offline metrics for evaluating text-to-image generative models. I identified standard metrics such as FID and CLIPScore, and found that two types of metrics can be defined: distance metrics and score metrics.
+
+I experimented with FID and CLIPScore metrics. For the FID metric, I changed the feature extractor and the method of calculating the distance between the two distributions. I used three feature extractors: InceptionV3, CLIP and DINOv2. I also used two distance computing methods: fréchet distance and kernel distance. As a result, I got 6 metrics: FID\cite{FID}, KID, FD\_CLIP, KD\_CLIP\cite{KD_CLIP}, FD\_DINOv2\cite{FD_DINOv2} and KD\_DINOv2. I conducted experiments in which I determined the metric that correlates best with a human judgement is FD\_DINOv2.
+
+For score metrics I changed feature extractor and dataset for finetuning. I ended up experimenting with several metrics: CLIPScore\cite{CLIPScore}, CLIPScore with MCLIP as feature extractor, ImageReward\cite{Image_reward} and HPSv2\cite{HPSv2}. As a result of the experiment I get that ImageReward correlates best with human judgement.
+
+I also derived my unique COS\_DINOv2 metric. The distinctive specificity of the metric is that it takes into account that real images taken from dataset and generated images refer to the same prompts. My metric showed excellent correlation with human opinion on a level with FD\_DINOv2.
+
+
+In conclusion, my work has made a huge step in the development of offline metrics for text-to-image generative models. I proposed to divide current metrics into two types: distance metrics and score metrics. I highlighted the best metrics of both kinds and proposed my own, new offline metrics. I hope that my research contributes to further development in the field of offline metrics for text-to-image generative models.
